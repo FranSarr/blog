@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { client } from '../../lib/sanity'
 import Link from 'next/link'
+import { PortableText } from '@portabletext/react'
 
 export default function Post({ post }) {
   return (
@@ -15,7 +16,7 @@ export default function Post({ post }) {
       <Link as='/' href={'/'}>
           <a className='block text-center underline'>&#8592; Back</a>
         </Link>
-        
+
       <h1 className='mt-10 text-center text-3xl mb-10 font-extrabold tracking-tight text-gray-900'>
           {post.title}
         </h1>
@@ -26,11 +27,12 @@ export default function Post({ post }) {
               {new Date(post.publishedAt).toDateString().slice(4)}
             </p>
             <p>body</p>
+
+            <PortableText value={post.body} />
+
+            
           </div>
         </div>
-
-
-      
         </div>
         </div>
   )
